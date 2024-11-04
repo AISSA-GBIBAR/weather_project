@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,18 +26,20 @@
     --winter-color-3: #6584EB;
     --winter-color-4: #65D9EB;
 
-    --main-border:20px;
+    --main-border: 20px;
 }
 
 .bg-sun {
     background: var(--sun-color-1);
     background: linear-gradient(90deg, var(--sun-color-1) 0%, var(--sun-color-4) 100%);
 }
-.bg-night{
- background: var(--night-color-1);
-background: linear-gradient(90deg, var(--night-color-1) 0%, var(--night-color-5) 100%); 
+
+.bg-night {
+    background: var(--night-color-1);
+    background: linear-gradient(90deg, var(--night-color-1) 0%, var(--night-color-5) 100%);
 }
-.bg-winter{
+
+.bg-winter {
     background: var(--winter-color-1);
     background: linear-gradient(90deg, var(--winter-color-1) 0%, var(--winter-color-4) 100%);
 }
@@ -51,22 +55,26 @@ section {
 
     color: var(--sun-color-1);
 }
-.container-weather{
+
+.container-weather {
     width: 600px;
     height: 350px;
-    background-color:var(--sun-color-3);
+    background-color: var(--sun-color-3);
     border-radius: 20px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     display: flex;
     align-items: center;
+    transition: all 0.4s ease-in-out;
 }
-.container-weather .part-1{
-    width:50%;
+
+
+.container-weather .part-1 {
+    width: 50%;
     height: calc(100% + 40px);
-    background:url("../img/sky.jpg") center/cover no-repeat;
+    background: url("../img/sky.jpg") center/cover no-repeat;
     object-fit: fill;
     border-radius: var(--main-border);
-    box-shadow:rgba(0, 0, 0, 0.1) 6px 1px 12px;
+    box-shadow: rgba(0, 0, 0, 0.1) 6px 1px 12px;
     position: relative;
     overflow: hidden;
     padding: 20px;
@@ -74,59 +82,70 @@ section {
     flex-direction: column;
     justify-content: space-between;
     transition: all 0.4s ease-in-out;
+    cursor: pointer;
 }
-.container-weather .part-1:hover{
+
+.container-weather .part-1:hover {
     transform: scale(1.05) perspective(1500px) rotateY(10deg);
 }
-.container-weather .part-1 .overlay{
+
+.container-weather .part-1 .overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
-    top:0;
+    top: 0;
     background-color: var(--sun-color-4);
     opacity: 0.6;
 }
-.z-index-up{
+
+.z-index-up {
     position: relative;
     z-index: 1;
 }
 
-.info{
+.info {
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 4px;
 }
-.info .nameDay{
+
+.info .nameDay {
     font-size: 2em;
     font-weight: 900;
     text-transform: capitalize;
 }
-.info .location{
+
+.info .location {
     font-weight: 600;
 }
 
-.info-weather .temp{
+.info-weather .temp {
     font-size: 2.3em;
     font-weight: 900;
 }
-.info-weather .temp .icon-temp{
+
+.info-weather .temp .icon-temp {
     color: rgb(241, 122, 122);
 }
-.info-weather .desc{
+
+.info-weather .desc {
     font-size: 1.5em;
     font-weight: 800;
 }
+
 .info-weather img {
     width: 90px;
-    animation:img-sun 4s linear infinite ;
+    animation: img-sun 60s linear infinite;
 }
-@keyframes img-sun{
-    0%{
+
+@keyframes img-sun {
+    0% {
         transform: rotate(0deg);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
 }
@@ -135,48 +154,184 @@ section {
     width: 50%;
     height: 100%;
     padding: 20px;
+    transition: all 0.4s ease-in-out;
 }
-.part-2 .info-Day{
-    margin-bottom: 20px;
+
+.part-2 .info-Day {
+    margin-bottom: 30px;
 }
-.part-2 .info-Day > div {
+
+.part-2 .info-Day>div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.1em;
     font-weight: 600;
 }
-.part-2 .info-Day>div span:first-child{
+
+.part-2 .info-Day>div span:first-child {
     font-size: 1.2em;
     font-weight: 800;
     text-transform: uppercase;
 }
 
-.future{
+.future {
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: var(--main-border);
+    margin: 20px 0;
+    animation: animate-future 1s ease-in-out;
 }
-.future .cart{
+.future .cart {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
     padding: 15px;
     column-gap: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
 }
-.future .cart .icon{
+
+.future .cart .icon {
     font-size: 1.5em;
 }
-.future .cart .temp{
+
+.future .cart .temp {
     font-weight: 900;
 }
-.future .cart.active{
+
+.future .cart.active,
+.future .cart:hover {
     background-color: var(--sun-color-1);
     color: var(--sun-color-3);
     transform: scale(1.07);
     border-radius: var(--main-border);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
+
+.future .cart:hover {
+    transform: scale(1.19);
+}
+
+.remove-parte-2 {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.remove-parte-2 .remove-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(90deg,rgba(221, 237, 249, 1)  0%, rgba(101, 219, 235, 1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    color: var(--sun-color-3);
+    transition: all 0.3s ease-in-out;
+}
+.remove-parte-2 .remove-icon:hover{
+    transform: scale(0.9);
+}
+
+
+.container-weather.hide {
+    width: 300px;
+}
+.container-weather.hide .part-1{
+    width: 100%;
+}
+
+.container-weather.hide .part-2{
+    display: none;
+}
+
+/* 
+=================================================================================
+========plus-anther-location=====================================================
+================================================================================= */
+
+.plus-anther-location{
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--sun-color-1);
+    color: var(--sun-color-3);
+    font-size: 2.5em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 99999;
+
+}
+.plus-anther-location span{
+        transition: all 0.3s ease-in-out;
+}
+.plus-anther-location.x span{
+        transform: rotate(45deg) translateY(1px);
+}
+.plus-anther-location:hover{
+    transform: scale(1.1);
+}
+
+.pop-up-search{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.605);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+.pop-up-search.active{
+    opacity: 1;
+    visibility: visible;
+}
+.pop-up-search .search-bar{
+    width: 2%;
+    transition: all 0.5s ease-in-out;
+}
+.pop-up-search.active .search-bar{
+    width: 70%;
+    height: 50px;
+    position: relative;
+    transition: all 0.5s ease-in-out 0.2s;
+}
+.pop-up-search .search-bar input{
+    width: 100%;
+    height: 100%;
+    padding: 0 30px;
+    padding-left: 45px;
+    border-radius: var(--main-border);
+    border: none;
+    outline: none;
+    background-color: var(--sun-color-1);
+    font-size: 1.2em;
+}
+.pop-up-search .search-bar > span{
+    position: absolute;
+    left: 12px;
+    top: 13px;
+    color: var(--sun-color-2);
+    font-size: 1.2em;
+}
+
