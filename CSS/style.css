@@ -130,3 +130,53 @@ section {
         transform: rotate(360deg);
     }
 }
+
+.part-2 {
+    width: 50%;
+    height: 100%;
+    padding: 20px;
+}
+.part-2 .info-Day{
+    margin-bottom: 20px;
+}
+.part-2 .info-Day > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+.part-2 .info-Day>div span:first-child{
+    font-size: 1.2em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.future{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: var(--main-border);
+}
+.future .cart{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    column-gap: 10px;
+}
+.future .cart .icon{
+    font-size: 1.5em;
+}
+.future .cart .temp{
+    font-weight: 900;
+}
+.future .cart.active{
+    background-color: var(--sun-color-1);
+    color: var(--sun-color-3);
+    transform: scale(1.07);
+    border-radius: var(--main-border);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
