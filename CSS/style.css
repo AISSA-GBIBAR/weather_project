@@ -296,6 +296,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 99;
 
     opacity: 0;
@@ -309,6 +310,7 @@ section {
 .pop-up-search .search-bar{
     width: 2%;
     transition: all 0.5s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 }
 .pop-up-search.active .search-bar{
     width: 70%;
@@ -320,7 +322,7 @@ section {
     width: 100%;
     height: 100%;
     padding: 0 30px;
-    padding-left: 45px;
+    padding-left: 55px;
     border-radius: var(--main-border);
     border: none;
     outline: none;
@@ -329,9 +331,74 @@ section {
 }
 .pop-up-search .search-bar > span{
     position: absolute;
-    left: 12px;
+    left: 19px;
     top: 13px;
     color: var(--sun-color-2);
     font-size: 1.2em;
 }
 
+/* 
+======================================================
+===========name_city==================================
+====================================================== */
+.pop-up-search .name_city{
+    height:0%;
+    width: 0%;
+    transition: all 0.5s ease-in-out ;
+}
+
+.pop-up-search.active .name_city{
+    width: 67%;
+    height: 50%;
+    background-color: var(--sun-color-1);
+    color: var(--night-color-5);
+    padding: 20px;
+    border-end-end-radius: 5px;
+    border-end-start-radius: var(--main-border);    
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.name_city::-webkit-scrollbar{
+    width: 5px;
+    background-color: var(--sun-color-4);
+    border-radius: 5px;
+}
+.name_city::-webkit-scrollbar-thumb{
+    background: var(--sun-color-3);
+    border-radius: 10px;
+}
+.name_city::-webkit-scrollbar-thumb:hover{
+    background: var(--sun-color-2);
+}
+
+.pop-up-search .group_city {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.pop-up-search.active .group_city{
+    margin-bottom: 15px;
+     opacity: 1;
+    visibility: visible;
+}
+.name_group{
+    font-size: 1.2em;
+    font-weight: 800;
+    color: var(--sun-color-4);
+}
+.names_city{
+    display: flex;
+    flex-direction: column;
+}
+.names_city .city{
+    padding:5px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.names_city .city:hover{
+    background-color: var(--sun-color-4);
+    border-radius: var(--main-border);
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
