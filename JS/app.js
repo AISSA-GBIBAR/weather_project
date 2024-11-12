@@ -17,4 +17,5 @@ let search_popUp = document.querySelector(".pop-up-search");
 plus.addEventListener("click", ()=>{
     search_popUp.classList.toggle("active");
     plus.classList.toggle("x");
+    loadCountries();
 })

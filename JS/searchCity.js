@@ -5,31 +5,41 @@ var config = {
 
 var name_city = document.querySelector(".name_city");
 
-var all_city_of_world = {};
-
 function loadCountries() {
 	let apiEndpoint = config.CountriesUrl;
 
 	fetch(apiEndpoint, { headers: { "X-CSCAPI-KEY": config.Countrieskey } })
 		.then((Response) => Response.json())
 		.then((data) => {
+			let HTML = '<div class="group_city"> <div class="names_city">';
 			data.forEach((country) => {
 				let shortCut_contry = country.iso2;
-				// let urlCity = `${apiEndpoint}/${shortCut_contry}/cities`;
-				all_city_of_world[country.name] = [shortCut_contry];
+				let name_country = country.name;
+				HTML += `<span class="city" data-name="${shortCut_contry}" onclick='loadCity("${name_country}", "${shortCut_contry}")'>${name_country}</span>`;
 			});
+			HTML += "</div>";
+			name_city.innerHTML = HTML;
 		})
 		.catch((error) => console.error("Error loading countries : ", error));
 }
-loadCountries() 
+ 
+function loadCity(name_contry, iso2) {	
+	name_city.scrollTop = 0;
+	let apiEndpoint = `${config.CountriesUrl}/${iso2}/cities`;
 
-function loadCity() {
-	let apiEndpoint = config.CityUrl;
-	for (let key in all_city_of_world) {
-		console.log(key);
-        
-	}
-    // console.log(all_city_of_world);
-    
+	fetch(apiEndpoint, { headers: { "X-CSCAPI-KEY": config.Countrieskey } })
+	.then((Response) => Response.json())
+	.then((data) =>{
+		let HTML = `<div class="name_group" data-countries = "${iso2}">
+					<i class="bi bi-arrow-left-circle-fill" onclick="loadCountries()" ></i>
+					 ${name_contry}</div> 
+					<div class="group_city"> <div class="names_city">`;
+		data.forEach((city)=>{
+			HTML += `<span class="city" data-city = "${city.name}">${city.name}</span>`;
+		})
+		HTML += "</div>";
+		name_city.innerHTML = HTML;
+
+		
+	})
 }
-loadCity();

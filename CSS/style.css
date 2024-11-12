@@ -387,6 +387,17 @@ section {
     font-weight: 800;
     color: var(--sun-color-4);
 }
+.name_group i{
+    position: relative;
+    top: 2px;
+    font-size: 1.1em;
+    margin-right: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.name_group i:hover{
+    color: var(--sun-color-3);
+}
 .names_city{
     display: flex;
     flex-direction: column;
