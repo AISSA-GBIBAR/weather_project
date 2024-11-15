@@ -69,7 +69,7 @@ data_search.addEventListener("input", (e)=>{
 		const isVisible = data.name.includes(value) || data.name.includes(Cpitalize(value));
 		
 		let element = document.querySelector(".A-" + data.iso2);
-		element.classList.toggle("hide", !isVisible);
+		element.classList.toggle("hide-search", !isVisible);
 	})
 	
 })
