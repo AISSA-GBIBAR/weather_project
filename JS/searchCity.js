@@ -62,14 +62,24 @@ function Cpitalize(str){
 		   .join(" ");
 }
 
+let not_found = document.querySelector(".not_found");
 
 data_search.addEventListener("input", (e)=>{
 	const value = e.target.value;
+	let count = 1
 	data_world.forEach((data)=>{
+		not_found.classList.remove("active");
 		const isVisible = data.name.includes(value) || data.name.includes(Cpitalize(value));
 		
 		let element = document.querySelector(".A-" + data.iso2);
 		element.classList.toggle("hide-search", !isVisible);
+		if(!isVisible) count++;
+		
 	})
+	if(count > 250){
+		not_found.classList.add("active");
+		
+	}
+	
 	
 })
