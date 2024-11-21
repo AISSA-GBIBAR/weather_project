@@ -4,7 +4,7 @@ var config = {
 };
 let data_world = [];
 
-var name_city = document.querySelector(".name_city");
+var name_city = document.querySelector(".name_city .counternar");
 let data_search = document.querySelector("[data-search]");
 
 
@@ -62,13 +62,13 @@ function Cpitalize(str){
 		   .join(" ");
 }
 
-let not_found = document.querySelector(".not_found");
+let footer_city = document.querySelector(".footer-city");
 
 data_search.addEventListener("input", (e)=>{
 	const value = e.target.value;
 	let count = 1
 	data_world.forEach((data)=>{
-		not_found.classList.remove("active");
+		footer_city.innerHTML = "";
 		const isVisible = data.name.includes(value) || data.name.includes(Cpitalize(value));
 		
 		let element = document.querySelector(".A-" + data.iso2);
@@ -77,8 +77,7 @@ data_search.addEventListener("input", (e)=>{
 		
 	})
 	if(count > 250){
-		not_found.classList.add("active");
-		
+		footer_city.innerHTML = '<div class="not_found">The thing you are looking not to exist</div>';
 	}
 	
 	

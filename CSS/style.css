@@ -419,8 +419,4 @@ section {
 .not_found{
     color:var(--sun-color-3);
     font-weight: 700;
-    display: none;
-}
-.not_found.active{
-    display: block;
 }
