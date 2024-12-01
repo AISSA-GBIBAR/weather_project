@@ -1,48 +1,65 @@
-function getLocation() {
-	data_location = {};
+const getLocationData = async () => {
+  let data_location = {};
+  let error_location = null;
 
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition(
-			(position) => {
-				const latitude = position.coords.latitude;
-				const longitude = position.coords.longitude;
-				// console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-				const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
-				fetch(url)
-					.then((response) => response.json())
-					.then((data) => {
-						if (data.address) {
-							city = data.address.city || data.address.town || data.address.village;
-							data_location["info"] = city;
-							data_location["country"] = data.address.country;
-							data_location["codeContry"] = data.address.country_code.toUpperCase();
-						} else {
-							return "Could not retrieve the city name.";
-						}
-					})
-					.catch((error) => {
-						return "Request error: " + error; 
-					});
-			},
-			(error) => {
-				switch (error.code) {
-					case error.PERMISSION_DENIED:
-						return "The user declined the site request.";
-					case error.POSITION_UNAVAILABLE:
-						return "The location is unavailable.";
-					case error.TIMEOUT:
-						return "The site request has timed out.";
-					default:
-						return "An unexpected error occurred.";
-				}
-			}
-		);
-	} else {
-		return "Geolocation Not supported in this browser.";
-	}
+  if (!navigator.geolocation) {
+    error_location = "Geolocation is not supported in this browser.";
+    return error_location; // Return immediately if geolocation is unsupported
+  }
 
-	return data_location;
-}
-mylocation = getLocation();
-console.log(mylocation);
+  try {
+    // Wait for geolocation to get the position
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // Build the API URL
+    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+
+    try {
+      // Fetch data from the API
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.address) {
+        const city = data.address.city || data.address.town || data.address.village;
+        data_location["info"] = city;
+        data_location["country"] = data.address.country;
+        data_location["codeContry"] = data.address.country_code.toUpperCase();
+      } else {
+        error_location = "Could not retrieve the city name.";
+      }
+    } catch (fetchError) {
+      error_location = "Error fetching location data: " + fetchError.message;
+    }
+  } catch (geoError) {
+    // Handle geolocation errors
+    switch (geoError.code) {
+      case geoError.PERMISSION_DENIED:
+        error_location = "The user declined the site request.";
+        break;
+      case geoError.POSITION_UNAVAILABLE:
+        error_location = "The location is unavailable.";
+        break;
+      case geoError.TIMEOUT:
+        error_location = "The site request has timed out.";
+        break;
+      default:
+        error_location = "An unexpected error occurred.";
+    }
+  }
+
+  // Return data_location if populated, otherwise error_location
+  return Object.keys(data_location).length > 0 ? data_location : error_location;
+};
+
+// Call the function using async/await
+(async () => {
+  const result = await getLocationData();
+  console.log(result); // Log the result
+})();
+
 
