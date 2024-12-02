@@ -66,8 +66,10 @@ let messageBox = document.querySelector(".message-box");
   const result = await getLocationData();
   if (typeof result === "object" && result !== null){
     popUpError.classList.add("hide");
-    const formatCityCountry = `${result.info}, ${result.codeContry}`;
+    let nameCity = result.info;
+    const formatCityCountry = `${nameCity}, ${result.codeContry}`;
     nameCityCountry.innerHTML = formatCityCountry;
+    fetchWeather(nameCity.toLowerCase());
   }else{
     popUpError.classList.remove("hide");
     messageBox.innerHTML = result;

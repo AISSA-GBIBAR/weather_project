@@ -126,8 +126,12 @@ section {
     font-weight: 900;
 }
 
-.info-weather .temp .icon-temp {
+.info-weather .temp .icon-temp i.redIcon {
     color: rgb(241, 122, 122);
+}
+
+.info-weather .temp .icon-temp{
+    color: var(--sun-color-3);
 }
 
 .info-weather .desc {
