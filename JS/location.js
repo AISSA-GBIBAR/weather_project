@@ -56,10 +56,14 @@ const getLocationData = async () => {
   return Object.keys(data_location).length > 0 ? data_location : error_location;
 };
 
+let nameCityCountry = document.querySelector(".nameCityCountry");
 // Call the function using async/await
 (async () => {
   const result = await getLocationData();
-  console.log(result); // Log the result
+  if (typeof result === "object" && result !== null){
+    const formatCityCountry = `${result.info}, ${result.codeContry}`;
+    nameCityCountry.innerHTML = formatCityCountry;
+  }
 })();
 
 

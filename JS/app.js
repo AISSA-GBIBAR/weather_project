@@ -19,3 +19,25 @@ plus.addEventListener("click", ()=>{
     plus.classList.toggle("x");
     loadCountries();
 })
+
+// ================ name Day and Date =================
+
+let elementNameDay = document.querySelector(".nameDay");
+let formatDate = document.querySelector(".formatDate");
+
+const today = new Date();
+
+//======> get name day
+const nameDay = today.toLocaleString("en-US", {weekday: "long"});
+elementNameDay.innerHTML = nameDay;
+
+//=======> get date
+let day = today.getDate();
+day = day < 10? `0${day}` : day;
+
+const month = today.toLocaleString("en-US", {month: "short"});
+const year = today.getFullYear();
+
+const date = `${day} ${month} ${year}`;
+
+formatDate.innerHTML = date;
