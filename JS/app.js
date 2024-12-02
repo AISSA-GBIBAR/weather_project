@@ -41,3 +41,10 @@ const year = today.getFullYear();
 const date = `${day} ${month} ${year}`;
 
 formatDate.innerHTML = date;
+
+// =============== realod page od popup error =============
+let buttonError = document.querySelector(".button-error");
+
+buttonError.addEventListener("click", ()=>{
+    location.reload();
+})

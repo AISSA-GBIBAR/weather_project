@@ -42,7 +42,7 @@ const getLocationData = async () => {
         error_location = "The user declined the site request.";
         break;
       case geoError.POSITION_UNAVAILABLE:
-        error_location = "The location is unavailable.";
+        error_location = "Check your connection or The location is unavailable.";
         break;
       case geoError.TIMEOUT:
         error_location = "The site request has timed out.";
@@ -57,12 +57,20 @@ const getLocationData = async () => {
 };
 
 let nameCityCountry = document.querySelector(".nameCityCountry");
+let popUpError = document.querySelector(".popUpError");
+let messageBox = document.querySelector(".message-box");
+
+
 // Call the function using async/await
 (async () => {
   const result = await getLocationData();
   if (typeof result === "object" && result !== null){
+    popUpError.classList.add("hide");
     const formatCityCountry = `${result.info}, ${result.codeContry}`;
     nameCityCountry.innerHTML = formatCityCountry;
+  }else{
+    popUpError.classList.remove("hide");
+    messageBox.innerHTML = result;
   }
 })();
 
