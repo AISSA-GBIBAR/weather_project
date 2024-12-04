@@ -48,3 +48,26 @@ let buttonError = document.querySelector(".button-error");
 buttonError.addEventListener("click", ()=>{
     location.reload();
 })
+
+// ============= short day in future ====================
+const shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const lengthShortDays = shortDays.length;
+
+
+let NumberDay = today.getDay();
+
+let nameDaya = document.querySelectorAll('.name-day');
+
+let count = 0;
+nameDaya.forEach((element, index) => {
+    let number = NumberDay + index;
+    
+    if (number < lengthShortDays){
+        element.innerHTML = shortDays[NumberDay + index]; 
+          
+    }else{
+        element.innerHTML = shortDays[count]; 
+        count++;
+    }
+    
+});

@@ -141,10 +141,10 @@ section {
 
 .info-weather img {
     width: 90px;
-    animation: img-sun 60s linear infinite;
+    /* animation: img-sun 60s linear infinite; */
 }
 
-@keyframes img-sun {
+/* @keyframes img-sun {
     0% {
         transform: rotate(0deg);
     }
@@ -152,7 +152,7 @@ section {
     100% {
         transform: rotate(360deg);
     }
-}
+} */
 
 .part-2 {
     width: 50%;
