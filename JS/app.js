@@ -2,23 +2,21 @@ let remove_part2 = document.querySelector(".remove-icon");
 let containerWeather = document.querySelector(".container-weather");
 let part1 = document.querySelector(".part-1");
 
-remove_part2.addEventListener("click", ()=>{
-    containerWeather.classList.toggle("hide");
-})
-part1.addEventListener("click", ()=>{
-    containerWeather.classList.toggle("hide");
-})
-
-
+remove_part2.addEventListener("click", () => {
+	containerWeather.classList.toggle("hide");
+});
+part1.addEventListener("click", () => {
+	containerWeather.classList.toggle("hide");
+});
 
 let plus = document.querySelector(".plus-anther-location");
 let search_popUp = document.querySelector(".pop-up-search");
 
-plus.addEventListener("click", ()=>{
-    search_popUp.classList.toggle("active");
-    plus.classList.toggle("x");
-    loadCountries();
-})
+plus.addEventListener("click", () => {
+	search_popUp.classList.toggle("active");
+	plus.classList.toggle("x");
+	loadCountries();
+});
 
 // ================ name Day and Date =================
 
@@ -28,14 +26,14 @@ let formatDate = document.querySelector(".formatDate");
 const today = new Date();
 
 //======> get name day
-const nameDay = today.toLocaleString("en-US", {weekday: "long"});
+const nameDay = today.toLocaleString("en-US", { weekday: "long" });
 elementNameDay.innerHTML = nameDay;
 
 //=======> get date
 let day = today.getDate();
-day = day < 10? `0${day}` : day;
+day = day < 10 ? `0${day}` : day;
 
-const month = today.toLocaleString("en-US", {month: "short"});
+const month = today.toLocaleString("en-US", { month: "short" });
 const year = today.getFullYear();
 
 const date = `${day} ${month} ${year}`;
@@ -45,29 +43,27 @@ formatDate.innerHTML = date;
 // =============== realod page od popup error =============
 let buttonError = document.querySelector(".button-error");
 
-buttonError.addEventListener("click", ()=>{
-    location.reload();
-})
+buttonError.addEventListener("click", () => {
+	location.reload();
+});
 
 // ============= short day in future ====================
 const shortDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const lengthShortDays = shortDays.length;
 
-
 let NumberDay = today.getDay();
 
-let nameDaya = document.querySelectorAll('.name-day');
+let nameDaya = document.querySelectorAll(".name-day");
 
 let count = 0;
 nameDaya.forEach((element, index) => {
-    let number = NumberDay + index;
-    
-    if (number < lengthShortDays){
-        element.innerHTML = shortDays[NumberDay + index]; 
-          
-    }else{
-        element.innerHTML = shortDays[count]; 
-        count++;
-    }
-    
+	let number = NumberDay + index;
+
+	if (number < lengthShortDays) {
+		element.innerHTML = shortDays[NumberDay + index];
+	} else {
+		element.innerHTML = shortDays[count];
+		count++;
+	}
 });
+

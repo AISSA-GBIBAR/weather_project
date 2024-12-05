@@ -16,9 +16,9 @@
     --sun-color-5: #9A65EB;
 
     --night-color-1: #342564;
-    --night-color-2: #DC65EB;
-    --night-color-3: #B065EB;
-    --night-color-4: #6571EB;
+    --night-color-2: #523E94;
+    --night-color-3: #7D5EE0;
+    --night-color-4: #3B2D6B;
     --night-color-5: #201640;
 
     --winter-color-1: #74AEDE;
@@ -66,6 +66,9 @@ section {
     align-items: center;
     transition: all 0.4s ease-in-out;
 }
+.container-weather.night{
+    background-color: var(--night-color-4);
+}
 
 
 .container-weather .part-1 {
@@ -97,6 +100,9 @@ section {
     top: 0;
     background-color: var(--sun-color-4);
     opacity: 0.6;
+}
+.container-weather .part-1 .overlay.night {
+    background-color: var(--night-color-1);
 }
 
 .z-index-up {
@@ -141,18 +147,7 @@ section {
 
 .info-weather img {
     width: 90px;
-    /* animation: img-sun 60s linear infinite; */
 }
-
-/* @keyframes img-sun {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-} */
 
 .part-2 {
     width: 50%;
@@ -333,6 +328,10 @@ section {
     background-color: var(--sun-color-1);
     font-size: 1.2em;
 }
+.pop-up-search .search-bar input.night{
+    background-color: var(--night-color-5);
+    color: var(--sun-color-1);
+}
 .pop-up-search .search-bar > span{
     position: absolute;
     left: 19px;
@@ -361,6 +360,10 @@ section {
     border-end-start-radius: var(--main-border);    
     overflow-y: scroll;
     overflow-x: hidden;
+}
+.pop-up-search.active .name_city.night{
+    background-color: var(--night-color-5);
+    color: var(--sun-color-1);
 }
 
 .name_city::-webkit-scrollbar{
