@@ -69,7 +69,7 @@ let messageBox = document.querySelector(".message-box");
     let nameCity = result.info;
     const formatCityCountry = `${nameCity}, ${result.codeContry}`;
     nameCityCountry.innerHTML = formatCityCountry;
-    fetchWeather(nameCity.toLowerCase());
+    codeHTML(nameCity.toLowerCase());
   }else{
     popUpError.classList.remove("hide");
     messageBox.innerHTML = result;
